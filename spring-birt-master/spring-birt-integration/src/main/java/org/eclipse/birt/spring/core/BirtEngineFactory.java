@@ -15,6 +15,9 @@ import org.springframework.util.Assert;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.logging.Level;
 
 /**
@@ -92,6 +95,10 @@ public class BirtEngineFactory implements FactoryBean<IReportEngine>, Applicatio
             EngineConfig config = new EngineConfig();
             config.getAppContext().put(this.exposedSpringApplicationContextKey, this.context);
             config.setLogConfig(null != this.logDirectory ? this.logDirectory.getAbsolutePath() : null, this.logLevel);
+            config.setResourcePath(getPath("Resources"));
+//            config.setResourcePath("C:\\Users\\Stanley\\Documents\\BIRT Examples\\birt-test\\spring-birt-master\\spring-birt-integration-example\\src\\main\\webapp\\Resources");
+            
+            
             try {
                 Platform.startup(config);
             } catch (BirtException e) {
@@ -115,5 +122,29 @@ public class BirtEngineFactory implements FactoryBean<IReportEngine>, Applicatio
         }
         // required properties
         Assert.notNull(exposedSpringApplicationContextKey, "you must provide a valid value for the 'exposedSpringApplicationContextKey' attribute");
+    }
+    
+
+    /**
+     * Get the resource path for Apache applications
+     * Example: %DOCUMENTS%\workspace-sts-3.9.4.RELEASE\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\spring-birt-integration-example
+     * 
+     * @param folderName
+     * @return
+     */
+    public String getPath(String folderName) {
+        try {
+            String path = this.getClass().getClassLoader().getResource("").getPath();
+            String fullPath = URLDecoder.decode(path, "UTF-8");
+            String pathArr[] = fullPath.split("/WEB-INF/classes/");
+            fullPath = pathArr[0];
+            String reponsePath = "";
+            // to read a file from webcontent
+            reponsePath = new File(fullPath).getPath() + File.separatorChar + folderName;
+            return reponsePath;
+        } catch (Exception e) {
+          
+        }
+        return "";
     }
 }

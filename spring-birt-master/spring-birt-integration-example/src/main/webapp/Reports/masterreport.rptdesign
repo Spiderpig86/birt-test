@@ -7,7 +7,7 @@
     <property name="bidiLayoutOrientation">ltr</property>
     <list-property name="cssStyleSheets">
         <structure>
-            <property name="fileName">Spring.css</property>
+            <property name="fileName">C:\Users\Stanley\Downloads\birt-test-master.zip\birt-test-master\spring-birt-master\spring-birt-integration-example\src\main\webapp\Resources\Spring.css</property>
         </structure>
     </list-property>
     <data-sources>
@@ -367,7 +367,7 @@ from orders]]></xml-property>
                     <property name="height">29px</property>
                     <property name="width">331px</property>
                     <property name="source">file</property>
-                    <expression name="uri" type="constant">logo_springsource_community.png</expression>
+                    <expression name="uri" type="constant">C:\Users\Stanley\Documents\BIRT Examples\birt-test\spring-birt-master\spring-birt-integration-example\src\main\webapp\Resources\logo_springsource_community.png</expression>
                 </image>
             </page-header>
             <page-footer>

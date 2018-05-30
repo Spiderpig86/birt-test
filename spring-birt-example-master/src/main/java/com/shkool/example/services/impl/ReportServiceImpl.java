@@ -47,7 +47,7 @@ import com.shkool.example.services.ReportService;
 public class ReportServiceImpl implements ReportService, ApplicationContextAware {
 
 	@Autowired
-	private ServletContext servletContext;
+	private ServletContext servletContext; // Reference the servlet container
 
 	private IReportEngine birtEngine;
 	private ApplicationContext context;
@@ -62,6 +62,7 @@ public class ReportServiceImpl implements ReportService, ApplicationContextAware
 	protected void initialize() throws BirtException {
 		EngineConfig config = new EngineConfig();
 		config.getAppContext().put("spring", this.context);
+		config.setResourcePath("C:\\Users\\Stanley\\Documents\\BIRT Examples\\birt-test\\spring-birt-master\\spring-birt-integration-example\\src\\main\\webapp\\Resources");
 		Platform.startup(config);
 		IReportEngineFactory factory = (IReportEngineFactory) Platform
 				.createFactoryObject(IReportEngineFactory.EXTENSION_REPORT_ENGINE_FACTORY);

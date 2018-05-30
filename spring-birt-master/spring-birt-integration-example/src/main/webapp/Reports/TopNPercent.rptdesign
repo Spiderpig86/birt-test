@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
     <property name="author">Mark Coggins</property>
-    <property name="createdBy">Eclipse BIRT Designer Version 3.7.2.v20120213 Build &lt;3.7.2.v20120214-1408></property>
+    <property name="createdBy">Eclipse BIRT Designer Version 4.7.0.v201706222054</property>
     <text-property name="title">Top Classic Models Inc. Customers by Revenue</text-property>
     <property name="units">in</property>
     <property name="layoutPreference">auto layout</property>
     <list-property name="cssStyleSheets">
         <structure>
-            <property name="fileName">Spring.css</property>
+            <property name="fileName">C:\Users\Stanley\Downloads\birt-test-master.zip\birt-test-master\spring-birt-master\spring-birt-integration-example\src\main\webapp\Resources\Spring.css</property>
+            <property name="useExternalCss">false</property>
         </structure>
     </list-property>
     <list-property name="configVars">
@@ -154,7 +155,7 @@ order by CUSTOMERTOTAL]]></xml-property>
                     <property name="height">29px</property>
                     <property name="width">331px</property>
                     <property name="source">file</property>
-                    <expression name="uri" type="constant">logo_springsource_community.png</expression>
+                    <expression name="uri" type="constant">C:\Users\Stanley\Documents\BIRT Examples\birt-test\spring-birt-master\spring-birt-integration-example\src\main\webapp\Resources\logo_springsource_community.png</expression>
                 </image>
             </page-header>
             <page-footer>
@@ -164,8 +165,8 @@ order by CUSTOMERTOTAL]]></xml-property>
                         <property name="width">80%</property>
                     </column>
                     <column id="144">
-                        <property name="width">20%</property>
                         <property name="textAlign">right</property>
+                        <property name="width">20%</property>
                     </column>
                     <row id="152">
                         <property name="height">0.2in</property>
@@ -264,8 +265,8 @@ order by CUSTOMERTOTAL]]></xml-property>
             <property name="width">7in</property>
             <column id="24"/>
             <row id="25">
-                <property name="height">0.1in</property>
                 <property name="style">BackgroundBlue</property>
+                <property name="height">0.1in</property>
                 <cell id="26">
                     <property name="style">special-detail</property>
                 </cell>
@@ -1479,9 +1480,9 @@ order by CUSTOMERTOTAL]]></xml-property>
                             </structure>
                         </list-property>
                         <property name="inheritColumns">true</property>
-                        <property name="dataSet">Customer Sales</property>
                         <property name="height">250pt</property>
                         <property name="width">400pt</property>
+                        <property name="dataSet">Customer Sales</property>
                         <list-property name="boundDataColumns">
                             <structure>
                                 <property name="name">CUSTOMERTOTAL</property>
@@ -1505,8 +1506,8 @@ order by CUSTOMERTOTAL]]></xml-property>
                 <cell id="36"/>
             </row>
             <row id="37">
-                <property name="height">0.1in</property>
                 <property name="style">special-detail</property>
+                <property name="height">0.1in</property>
                 <cell id="38"/>
             </row>
             <row id="39">
@@ -2583,7 +2584,7 @@ order by CUSTOMERTOTAL]]></xml-property>
                 EYPPaJ+SWv442+/0cuR+Mfhg9zB/gh8Rg89on5Ja/jjb7/Ry5H4x+GD3MH+CHxGDz2ifklr+ONvv9HLk
                 fjH4YPcwf4IfEYPPaJ+SWv442+/0cuR+Mfhg9zB/gh8Rg89on5Ja/jjb7/Ry5H4x+GD3MH+CHxGDz2if
                 klr+ONvv9HLkfjH4YPcwf4IfEYzvPaN3H/4S228D/vxr7PMv9I9nVo5cj8b7MV9zB/gh8cf/2Q==
-            </property>
+</property>
         </structure>
     </list-property>
 </report>

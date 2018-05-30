@@ -40,7 +40,7 @@ DELETE FROM ProductLines;
 # Load records into the tables. There should be no warnings.
 
 LOAD DATA LOCAL INFILE 'datafiles/customers.txt' INTO TABLE Customers
-          FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\r\n';
+          FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\r\n'
 
 SHOW WARNINGS LIMIT 10;
 
