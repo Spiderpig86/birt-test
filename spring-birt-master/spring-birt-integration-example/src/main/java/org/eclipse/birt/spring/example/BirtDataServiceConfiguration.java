@@ -19,17 +19,20 @@ import java.sql.Driver;
  */
 @EnableTransactionManagement
 @Configuration
-@PropertySource("/config.properties")
+@PropertySource("/config.properties") // This will be used in the environment pojo
 public class BirtDataServiceConfiguration {
 
+    /* Inject bean to get environment vars */
     @Inject
     private Environment environment;
 
+    /* Get transaction manager from Spring */
     @Bean
     public PlatformTransactionManager transactionManager() throws Exception {
         return new DataSourceTransactionManager(this.dataSource());
     }
 
+    
     @Bean
     @SuppressWarnings("unchecked")
     public DataSource dataSource() throws Exception {
@@ -42,6 +45,7 @@ public class BirtDataServiceConfiguration {
         // regular DS (perhaps a real PostgreSQL instance or a non in-memory H2 instance)
         SimpleDriverDataSource simpleDriverDataSource = new SimpleDriverDataSource();
 
+        /* Set the different database properties based on values in config.properties */
         Class<? extends Driver> d = (Class<? extends Driver>) Class.forName(environment.getProperty("ds.driverClass"));
 
         String user = environment.getProperty("ds.user"),

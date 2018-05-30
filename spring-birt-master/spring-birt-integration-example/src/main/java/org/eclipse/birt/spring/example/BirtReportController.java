@@ -15,7 +15,9 @@ import java.util.Map;
  */
 @Controller
 public class BirtReportController {
-
+    /**
+     * Set routes for displaying specific orders
+     */
     // 10104
     @RequestMapping("/orders/{orderId}.html")
     public ModelAndView customerReport(@PathVariable("orderId") String orderId) {

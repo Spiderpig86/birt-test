@@ -18,6 +18,8 @@ import org.springframework.web.servlet.view.BeanNameViewResolver;
 import javax.inject.Inject;
 
 /**
+ * 
+ * 
  * @author Jason Weathersby
  * @author Josh Long
  */
@@ -26,10 +28,13 @@ import javax.inject.Inject;
 @Configuration
 public class BirtWebConfiguration extends WebMvcConfigurerAdapter {
 
-
+    /* Used for configuring database and getting data from config.properties */
     @Inject
     private BirtDataServiceConfiguration birtDataServiceConfiguration;
 
+    /**
+     * Add routes for these different views
+     */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/TopNPercent");
@@ -40,6 +45,9 @@ public class BirtWebConfiguration extends WebMvcConfigurerAdapter {
         registry.addViewController("/SubReports");
     }
 
+    /**
+     * Serve all images to images/*
+     */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("images/*").addResourceLocations("/images/");
@@ -50,11 +58,15 @@ public class BirtWebConfiguration extends WebMvcConfigurerAdapter {
         BirtViewResolver bvr = new BirtViewResolver();
         bvr.setBirtEngine(this.engine().getObject());
         bvr.setViewClass(HtmlSingleFormatBirtView.class);
-        bvr.setDataSource(this.birtDataServiceConfiguration.dataSource());
+        bvr.setDataSource(this.birtDataServiceConfiguration.dataSource()); // Fetch the data from the database
         bvr.setReportsDirectory("Reports");
         bvr.setOrder(2);
         return bvr;
     }
+
+    /**
+     * BEANS FOR MASTER REPORT
+     */
 
     @Bean(name = "orderDetails")
     public AbstractSingleFormatBirtView orderDetailsView() throws Throwable {
@@ -70,8 +82,8 @@ public class BirtWebConfiguration extends WebMvcConfigurerAdapter {
     @Bean(name = "masterReport")
     public AbstractSingleFormatBirtView masterReportView() throws Throwable {
         HtmlSingleFormatBirtView abstractSingleFormatBirtView = new HtmlSingleFormatBirtView();
-        //PdfSingleFormatBirtView abstractSingleFormatBirtView = new PdfSingleFormatBirtView();
-        //MultiFormatBirtView abstractSingleFormatBirtView = new MultiFormatBirtView();
+//        PdfSingleFormatBirtView abstractSingleFormatBirtView = new PdfSingleFormatBirtView();
+//        MultiFormatBirtView abstractSingleFormatBirtView = new MultiFormatBirtView();
         
         abstractSingleFormatBirtView.setDataSource(birtDataServiceConfiguration.dataSource());
         abstractSingleFormatBirtView.setBirtEngine(engine().getObject());

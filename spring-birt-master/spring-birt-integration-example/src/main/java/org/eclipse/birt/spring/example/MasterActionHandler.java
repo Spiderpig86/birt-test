@@ -20,6 +20,9 @@ public class MasterActionHandler extends SimpleRequestParameterActionHandler {
 
 	}
 
+	/**
+	 * Generate all the links for the master report page (we added an extra handler)
+	 */
 	@Override
 	public String getURL(IAction actionDefn, IReportContext context) {
 
@@ -54,6 +57,7 @@ public class MasterActionHandler extends SimpleRequestParameterActionHandler {
 				link.append(".html");
 			}
 
+            System.out.println("generating order report link");
 			return link.toString();			
 		}else{
 			return super.getURL(actionDefn, context);

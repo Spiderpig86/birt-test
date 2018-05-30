@@ -34,3 +34,9 @@
 	LOAD DATA LOCAL INFILE 'datafiles/customers.txt' INTO TABLE Customers
           FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\r\n';
 	```
+
+	
+## Changes from Original
+* Removed all non-ASCII chars from sample data files since they caused some issues with parsing.
+* Set resource path so BIRT engine knows where to fetch styles and images.
+* Method added in `BirtEngineFactory.java` to resolve resource path automatically.
