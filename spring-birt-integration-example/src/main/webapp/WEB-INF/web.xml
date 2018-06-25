@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<context-param>
+		<param-name>contextClass</param-name>
+		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+	</context-param>
+
+	<!-- Use as the configuration of the servlet -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>org.eclipse.birt.spring.example.BirtWebConfiguration</param-value>
+	</context-param>
+
+	<!-- Specify the front controller to handle requests and URL mappings -->
+	<servlet>
+		<servlet-name>appServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value></param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- Specify the servlet mapping with '/' to force all routes to go to front 
+		controller -->
+	<servlet-mapping>
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<!-- Viewer HttpSession Listener -->
+	<listener>
+		<listener-class>org.eclipse.birt.report.listener.ViewerHttpSessionListener</listener-class>
+	</listener>
+
+	<!-- Viewer Servlet, Supports SOAP -->
+	<servlet>
+		<servlet-name>ViewerServlet</servlet-name>
+		<servlet-class>org.eclipse.birt.report.servlet.ViewerServlet</servlet-class>
+	</servlet>
+
+	<!-- Engine Servlet -->
+	<servlet>
+		<servlet-name>EngineServlet</servlet-name>
+		<servlet-class>org.eclipse.birt.report.servlet.BirtEngineServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ViewerServlet</servlet-name>
+		<url-pattern>/frameset</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ViewerServlet</servlet-name>
+		<url-pattern>/run</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/preview</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/download</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/parameter</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/document</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/output</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/extract</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.jpg</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.png</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.css</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.js</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.gif</url-pattern>
+  </servlet-mapping>
+
+	<!-- Settings for how to deal with the url report path. e.g. "http://host/repo/test.rptdesign". 
+		Following values are supported: <all> - All paths. <domain> - Only the paths 
+		with host matches current domain. Note the comparison is literal, "127.0.0.1" 
+		and "localhost" are considered as different hosts. <none> - URL paths are 
+		not supported. Defaults to "domain". -->
+	<context-param>
+		<param-name>URL_REPORT_PATH_POLICY</param-name>
+		<param-value>domain</param-value>
+	</context-param>
+
+	<!-- Temporary image/chart directory. Defaults to ${birt home}/report/images -->
+	<context-param>
+		<param-name>BIRT_VIEWER_IMAGE_DIR</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!-- Engine log directory. Defaults to ${birt home}/logs -->
+	<context-param>
+		<param-name>BIRT_VIEWER_LOG_DIR</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!-- Report engine log level -->
+	<context-param>
+		<param-name>BIRT_VIEWER_LOG_LEVEL</param-name>
+		<param-value>WARNING</param-value>
+	</context-param>
+
+	<!-- Directory where to store all the birt report script libraries (JARs). 
+		Defaults to ${birt home}/scriptlib -->
+	<context-param>
+		<param-name>BIRT_VIEWER_SCRIPTLIB_DIR</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!-- Resource location directory. Defaults to ${birt home} -->
+	<context-param>
+		<param-name>BIRT_RESOURCE_PATH</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<jsp-config>
+		<taglib>
+			<taglib-uri>/birt.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tlds/birt.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+
+
+
+</web-app>
